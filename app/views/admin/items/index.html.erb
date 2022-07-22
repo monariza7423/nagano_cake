@@ -1,18 +1,24 @@
 <h1>商品一覧</h1>
-<% @items.each do |item| %>
-  <
-   <p>商品ID</p>
-    <span><%= item.id %></span>
-    
-    <p>商品名</p>
-    <span><%= item.name %></span>
-    
-    <p>税抜価格</p>
-    <span><%= item.price %></span>
-    
-    <p>ジャンル</p>
-    <span><%= item.genre_id %></span>
-    
-    <p>ステータス</p>
-    <span><%= item.is_active %></span>
-<% end %>
+
+ <table>
+  <thead>
+   <tr>
+    <th>商品ID</th>
+    <th>商品名</th>
+    <th>税抜価格</th>
+    <th>ジャンル</th>
+    <th>ステータス</th>
+   </tr>
+  </thead>
+  <% @items.each do |item| %>
+   <tbody>
+    <tr>
+     <th><%= item.id %></th>
+     <th><%= link_to item.name, admin_item_path(item.id) %></th>
+     <th><%= item.price %></th>
+     <th><%= item.genre_id %></th>
+     <th><%= item.is_active %></th>
+    </tr>
+   </tbody>
+  <% end %>
+ </table>
