@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :genres, only:[:new, :create, :index, :edit, :update]
     resources :items, only:[:new, :create, :index, :show, :edit, :update]
+    resources :customers, only:[:index, :show, :edit, :update]
   end
   
   
