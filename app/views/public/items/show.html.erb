@@ -1,0 +1,14 @@
+<%= image_tag @item.image, size: "300x200" %>
+
+<h2><%= @item.name %></h2>
+
+<p><%= @item.introduction %></p>
+
+<h2>¥<%= @item.with_tax_price %>（税込価格）</h2>
+
+<%= form_with model: @item, url: cart_items_path, method: :post do |f| %>
+  <%= f.select :amount, *[1..12] %>
+<% end %>
+
+<%= link_to "カートに入れる", cart_items_path %>
+
