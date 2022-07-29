@@ -1,7 +1,7 @@
 <h1>マイページ</h1>
 
 <h2>登録情報</h2>
-<%= link_to "編集する", edit_customer_path(current_customer.id) %>
+<%= link_to "編集する", edit_customers_path %>
 
 <table border="1" style="border-collapse: collapse">
     
@@ -30,3 +30,7 @@
         <td><%= @customer.email %></td>
     </tr>
 </table>
+
+<h2>配送先</h2>
+
+<h2>注文履歴</h2>

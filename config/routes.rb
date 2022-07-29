@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  scope module: :public do
+    root to: 'homes#top'
+    get '/about' => 'homes#about', as: 'about'
+    get '/customers/confirm' => 'customers#confirm', as: "confirm"
+    patch '/customers/withdraw' => 'customers#withdraw', as: 'withdraw'
+    resource :customers, only:[:show, :edit, :update]
+    resources :items, only:[:index, :show]
+    resources :cart_items, only:[:index]
+    resources :addresses, only:[:index, :create, :edit, :update, :destroy]
+  end
+  
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -7,14 +18,6 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
-  
-  scope module: :public do
-    root to: 'homes#top'
-    get '/about' => 'homes#about', as: 'about'
-    resources :customers, only:[:show, :edit, :update]
-    resources :items, only:[:index, :show]
-    resources :cart_items, only:[:index]
-  end
   
   namespace :admin do
     root to: 'homes#top'
