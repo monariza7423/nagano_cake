@@ -1,21 +1,38 @@
-<h1>商品編集</h1>
-<%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
-  <p>商品画像<%= f.file_field :image, accept: "image/*" %></p>
+<div class="container">
+  <h1>商品編集</h1>
   
-  <p>商品名<%= f.text_field :name %></p>
-  
-  <p>商品説明<%= f.text_area :introduction %></p>
-  
-  <p>ジャンル<%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "選択してください") %></p>
-  
-  <p>税抜価格<%= f.text_field :price %></p>
-  
-  <p>
-    販売ステータス
-    <%= f.radio_button :is_active, :true %>販売中
-    <%= f.radio_button :is_active, :false %>販売停止中
-  </p>
-  
-  <%= f.submit "変更を保存" %>
-  
-<% end %>
+  <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
+  <table class="table">
+    <tr>
+      <th>商品画像</th>
+      <td><%= f.file_field :image, accept: "image/*" %></td>
+    </tr>
+    <tr>
+      <th>商品名</th>
+      <td><%= f.text_field :name %></td>
+    </tr>
+    <tr>
+      <th>商品説明</th>
+      <td><%= f.text_area :introduction %></td>
+    </tr>
+    <tr>
+      <th>ジャンル</th>
+      <td><%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "選択してください") %></td>
+    </tr>
+    <tr>
+      <th>税抜価格</th>
+      <td><%= f.text_field :price %></td>
+    </tr>
+    <tr>
+      <th>販売ステータス</th>
+      <td>
+        <%= f.radio_button :is_active, :true %>販売中
+        <%= f.radio_button :is_active, :false %>販売停止中
+      </td>
+    </tr>
+  </table>
+  <div class="text-center">
+    <%= f.submit "変更を保存", class: 'btn btn-success' %>
+  </div>  
+  <% end %>
+</div>

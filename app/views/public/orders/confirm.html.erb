@@ -50,4 +50,14 @@
   
   <p><strong>お届け先</strong></p>
   <%= @order.address_display %>
+  
+  <%= form_with model: @order, url: orders_path, method: 'post' do |f| %>
+    <%= f.hidden_field :pay_method, :value => @order.pay_method %>
+    <%= f.hidden_field :invoice_name, :value => @order.invoice_name %>
+    <%= f.hidden_field :invoice_postalcode, :value => @order.invoice_postalcode %>
+    <%= f.hidden_field :invoice_address, :value => @order.invoice_address %>
+    <%= f.hidden_field :postage, :value => @order.postage %>
+    <%= f.hidden_field :billing, :value => @total + @order.postage %>
+    <%= f.submit "注文を確定する", class: 'btn btn-primary' %>
+  <% end %>
 </div>

@@ -1,26 +1,34 @@
-<h1>商品一覧</h1>
-
- <table>
-  <thead>
-   <tr>
-    <th>商品ID</th>
-    <th>商品名</th>
-    <th>税抜価格</th>
-    <th>ジャンル</th>
-    <th>ステータス</th>
-   </tr>
-  </thead>
-  <% @items.each do |item| %>
-   <tbody>
+<div class="container">
+ <h1>商品一覧</h1>
+ <a class="btn" href="/admin/items/new">+</a>
+  <table class="table">
+   <thead>
     <tr>
-     <th><%= item.id %></th>
-     <th><%= link_to item.name, admin_item_path(item.id) %></th>
-     <th><%= item.price %></th>
-     <th><%= item.genre_id %></th>
-     <th><%= item.is_active %></th>
+     <th>商品ID</th>
+     <th>商品名</th>
+     <th>税抜価格</th>
+     <th>ジャンル</th>
+     <th>ステータス</th>
     </tr>
-   </tbody>
-  <% end %>
- </table>
- 
- <%= link_to "新規登録", new_admin_item_path %>
+   </thead>
+   <% @items.each do |item| %>
+    <tbody>
+     <tr>
+      <th><%= item.id %></th>
+      <th><%= link_to item.name, admin_item_path(item.id) %></th>
+      <th><%= item.price %></th>
+      <th><%= item.genre_id %></th>
+      <th>
+       <% if item.is_active == true %>
+        販売中
+       <% else %>
+        販売停止中
+       <% end %>
+      </th>
+     </tr>
+    </tbody>
+   <% end %>
+  </table>
+  
+  <%= paginate @items %>
+ </div>

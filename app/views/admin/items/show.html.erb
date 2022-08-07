@@ -1,19 +1,43 @@
-<h1>商品詳細</h1>
-<%= image_tag @item.image, size: "50x50" %>
-
-<p>商品名</p>
-<%= @item.name %>
-
-<p>商品説明</p>
-<%= @item.introduction %>
-
-<p>ジャンル</p>
-<%= @item.genre_id %>
-
-<p>税抜価格</p>
-<%= @item.price %>
-
-<p>販売ステータス</p>
-<%= @item.is_active %>
-
-<%= link_to "編集", edit_admin_item_path(@item.id) %>
+<div class="container">
+  <h1>商品詳細</h1>
+  
+  <div class="row">
+    <div class="col-md-3">
+      <%= image_tag @item.image, size: "250x250" %>
+    </div>
+    
+    <div class="col-md-7">
+      <table class="table">
+        <tr>
+          <th>商品名</th>
+          <td><%= @item.name %></td>
+        </tr>
+        <tr>
+          <th>商品説明</th>
+          <td><%= @item.introduction %></td>
+        </tr>
+        <tr>
+          <th>ジャンル</th>
+          <td><%= @item.genre_id %></td>
+        </tr>
+        <tr>
+          <th>税抜価格</th>
+          <td><%= @item.price %></td>
+        </tr>
+        <tr>
+          <th>販売ステータス</th>
+          <td>
+            <% if @item.is_active ==true %>
+              販売中
+            <% else %>
+             販売停止中
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="text-center">
+    <%= link_to "編集", edit_admin_item_path(@item.id), class: 'btn btn-success' %>
+  </div>
+</div>
