@@ -38,7 +38,8 @@ class Public::OrdersController < ApplicationController
         order_detail.item_id = cart_item.item_id
         order_detail.amount = cart_item.amount
         order_detail.order_id = @order.id
-        order_detail.purchase_price = cart_item.subtotal
+        order_detail.purcase_price = cart_item.subtotal
+        order_detail.product_status = 0
         order_detail.save
       end
       redirect_to orders_complete_path
