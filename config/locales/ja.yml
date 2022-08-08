@@ -4,19 +4,12 @@ ja:
         pay_method:
           credit_card: "クレジットカード"
           transfer: "銀行振込"
-        
-ja:
-    enums:
-      order:
         status:
           status0: "入金待ち"
           status1: "入金確認"
           status2: "製作中"
           status3: "発送準備"
           status4: "発送完了"
-        
-ja:
-    enums:
       order_detail:
         product_status:
           status0: "着手不可"

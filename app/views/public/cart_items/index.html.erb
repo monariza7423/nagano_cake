@@ -51,8 +51,8 @@
           <td>
             <% @cart_items.each do |cart_item| %>
               <% @total = @total + cart_item.subtotal %>
-              <%= @total %>
             <% end %>
+            <%= @total %>
           </td>
         </tr>
       </table>
