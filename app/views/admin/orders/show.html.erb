@@ -1,11 +1,32 @@
 <h1>注文履歴詳細</h1>
 
-<p>購入者</p>
-
-<p>注文日</p>
-
-<p>配送先</p>
-
-<p>支払方法</p>
-
-<p>注文ステータス</p>
+<table>
+  <tr>
+    <th>購入者</th>
+    <td><%= @order.customer.last_name %><%= @order.customer.first_name %></td>
+  </tr>
+  <tr>
+    <th>注文日</th>
+    <td><%= @order.created_at %>.strftime('%Y/%M/%D') %></td>
+  </tr>
+  <tr>
+    <th>配送先</th>
+    <td>
+      <%= @order.invoice_postalcode %>
+      <%= @order.invoice_address %>
+      <%= @order.invoice_name %>
+    </td>
+  </tr>
+  <tr>
+    <th>支払方法</th>
+    <td><%= @order.pay_method_i18n %></td>
+  </tr>
+  <tr>
+    <th>注文ステータス</th>
+    <td>
+      <%= form_with model: @order, url: admin_order_path(@order.id),method: :patch do |f| %>
+        <%= f.select :status, Order.statuses_i18n.invert %>
+        <%= f.submit "更新" %>
+      <% end %>
+  </tr>
+</table>
