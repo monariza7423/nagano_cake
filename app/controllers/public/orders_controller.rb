@@ -2,6 +2,9 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
     @address = current_customer.addresses
+    if current_customer.cart_items.count == 0
+      redirect_to cart_items_path
+    end
   end
   
   def confirm
