@@ -20,7 +20,7 @@
       </th>
       <th><%= customer.email %></th>
       <th>
-        <% if customer.is_active == false %>
+        <% if customer.is_deleted == false %>
           有効
         <% else %>
           退会済
